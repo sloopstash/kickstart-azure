@@ -19,13 +19,6 @@
         "description":"Region name."
       }
     },
-    "resource_group_name":{
-      "defaultValue":"crm-rg",
-      "type":"String",
-      "metadata":{
-        "description":"Resource group name."
-      }
-    },
     "virtual_network_name":{
       "defaultValue":"crm-vnet",
       "type":"String",
@@ -107,7 +100,7 @@
             "deleteOption":"Delete"
           },
           "imageReference":{
-            "id":"/subscriptions/[subscription().subscriptionId]/resourceGroups/[parameters('resource_group_name')]/providers/Microsoft.Compute/images/[parameters('image_name')]"
+            "id":"[resourceId('Microsoft.Compute/images',parameters('image_name'))]"
           }
         },
         "networkProfile":{
