@@ -51,10 +51,10 @@
   "variables":{},
   "functions":[],
   "resources":{
-    "crm_nic_bastion_vm_1":{
+    "crm_bastion_nic_1":{
       "apiVersion":"2021-05-01",
       "type":"Microsoft.Network/networkInterfaces",
-      "name":"crm-nic-bastion-vm-1",
+      "name":"crm-bastion-nic-1",
       "location":"[parameters('region_name')]",
       "properties":{
         "ipConfigurations":[{
@@ -67,7 +67,7 @@
               "privateIPAddress":"12.1.7.10",
               "privateIPAddressVersion":"IPv4",
               "publicIPAddress":{
-                "id":"[resourceId('Microsoft.Network/publicIPAddresses','crm-pip-bastion')]"
+                "id":"[resourceId('Microsoft.Network/publicIPAddresses','crm-bastion-pip')]"
               }
             }
           }
@@ -75,13 +75,20 @@
         "networkSecurityGroup": {
           "id":"[resourceId('Microsoft.Network/networkSecurityGroups',parameters('network_security_group_name'))]"
         }
+      },
+      "tags":{
+        "Name":"crm-bastion-nic-1",
+        "Environment":"[parameters('env')]",
+        "Stack":"crm",
+        "Region":"[parameters('region_name')]",
+        "Organization":"sloopstash"
       }
     },
-    "crm_vm_bastion_sr_1":{
-      "apiVersion":"2021-11-01",
+    "crm_bastion_vm_1":{
+      "apiVersion":"2023-03-01",
       "type":"Microsoft.Compute/virtualMachines",
-      "dependsOn":["crm_nic_bastion_vm_1"],
-      "name":"crm-vm-bastion-sr-1",
+      "dependsOn":["crm_bastion_nic_1"],
+      "name":"crm-bastion-vm-1",
       "location":"[parameters('region_name')]",
       "properties":{
         "hardwareProfile":{
@@ -90,7 +97,7 @@
         "storageProfile":{
           "osDisk":{
             "osType":"Linux",
-            "name":"crm-disk-bastion-vm-1",
+            "name":"crm-bastion-disk-1",
             "createOption":"FromImage",
             "caching":"ReadWrite",
             "diskSizeGB":30,
@@ -105,14 +112,14 @@
         },
         "networkProfile":{
           "networkInterfaces":[{
-            "id":"[resourceId('Microsoft.Network/networkInterfaces','crm-nic-bastion-vm-1')]",
+            "id":"[resourceId('Microsoft.Network/networkInterfaces','crm-bastion-nic-1')]",
             "properties":{
               "deleteOption":"Delete"
             }
           }]
         },
         "osProfile":{
-          "computerName":"crm-vm-bastion-sr-1",
+          "computerName":"crm-bastion-vm-1",
           "AdminUsername":"azureuser",
           "linuxConfiguration":{
             "disablePasswordAuthentication":true,
@@ -124,6 +131,13 @@
             }
           }
         }
+      },
+      "tags":{
+        "Name":"crm-bastion-vm-1",
+        "Environment":"[parameters('env')]",
+        "Stack":"crm",
+        "Region":"[parameters('region_name')]",
+        "Organization":"sloopstash"
       }
     }
   },

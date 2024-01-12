@@ -51,10 +51,10 @@
   "variables":{},
   "functions":[],
   "resources":{
-    "crm_nic_nginx_vm_1":{
+    "crm_nginx_nic_1":{
       "apiVersion":"2021-05-01",
       "type":"Microsoft.Network/networkInterfaces",
-      "name":"crm-nic-nginx-vm-1",
+      "name":"crm-nginx-nic-1",
       "location":"[parameters('region_name')]",
       "properties":{
         "ipConfigurations":[{
@@ -72,13 +72,20 @@
         "networkSecurityGroup": {
           "id":"[resourceId('Microsoft.Network/networkSecurityGroups',parameters('network_security_group_name'))]"
         }
+      },
+      "tags":{
+        "Name":"crm-nginx-nic-1",
+        "Environment":"[parameters('env')]",
+        "Stack":"crm",
+        "Region":"[parameters('region_name')]",
+        "Organization":"sloopstash"
       }
     },
-    "crm_vm_nginx_sr_1":{
-      "apiVersion":"2021-11-01",
+    "crm_nginx_vm_1":{
+      "apiVersion":"2023-03-01",
       "type":"Microsoft.Compute/virtualMachines",
-      "dependsOn":["crm_nic_nginx_vm_1"],
-      "name":"crm-vm-nginx-sr-1",
+      "dependsOn":["crm_nginx_nic_1"],
+      "name":"crm-nginx-vm-1",
       "location":"[parameters('region_name')]",
       "properties":{
         "hardwareProfile":{
@@ -87,7 +94,7 @@
         "storageProfile":{
           "osDisk":{
             "osType":"Linux",
-            "name":"crm-disk-nginx-vm-1",
+            "name":"crm-nginx-disk-1",
             "createOption":"FromImage",
             "caching":"ReadWrite",
             "diskSizeGB":30,
@@ -102,14 +109,14 @@
         },
         "networkProfile":{
           "networkInterfaces":[{
-            "id":"[resourceId('Microsoft.Network/networkInterfaces','crm-nic-nginx-vm-1')]",
+            "id":"[resourceId('Microsoft.Network/networkInterfaces','crm-nginx-nic-1')]",
             "properties":{
               "deleteOption":"Delete"
             }
           }]
         },
         "osProfile":{
-          "computerName":"crm-vm-nginx-sr-1",
+          "computerName":"crm-nginx-vm-1",
           "AdminUsername":"azureuser",
           "linuxConfiguration":{
             "disablePasswordAuthentication":true,
@@ -121,6 +128,13 @@
             }
           }
         }
+      },
+      "tags":{
+        "Name":"crm-nginx-vm-1",
+        "Environment":"[parameters('env')]",
+        "Stack":"crm",
+        "Region":"[parameters('region_name')]",
+        "Organization":"sloopstash"
       }
     }
   },
