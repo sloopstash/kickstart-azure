@@ -34,7 +34,7 @@
       }
     },
     "network_security_group_name":{
-      "defaultValue":"crm-nsg-nginx",
+      "defaultValue":"crm-nginx-nsg",
       "type":"String",
       "metadata":{
         "description":"Network security group name."
@@ -58,7 +58,7 @@
       "location":"[parameters('region_name')]",
       "properties":{
         "ipConfigurations":[{
-            "name":"ip_address_1",
+            "name":"ip-address-1",
             "properties":{
               "subnet":{
                 "id":"[resourceId('Microsoft.Network/virtualNetworks/subnets',parameters('virtual_network_name'),parameters('virtual_network_subnet_name'))]"
