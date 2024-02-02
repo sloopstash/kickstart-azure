@@ -18,6 +18,12 @@
       "metadata":{
         "description":"Region name."
       }
+    },
+    "storage_account_prefix":{
+      "type":"String",
+      "metadata":{
+        "description":"Storage account prefix."
+      }
     }
   },
   "variables":{},
@@ -26,7 +32,7 @@
     "crm_app_stt_st":{
       "apiVersion":"2022-09-01",
       "type":"Microsoft.Storage/storageAccounts",
-      "name":"crmappsttst",
+      "name":"[concat(parameters('storage_account_prefix'),'crmappsttstt')]",
       "location":"[parameters('region_name')]",
       "kind":"StorageV2",
       "sku":{
