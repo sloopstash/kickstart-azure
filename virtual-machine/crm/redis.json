@@ -5,7 +5,7 @@
   "apiProfile":"",
   "definitions":{},
   "parameters":{
-    "env":{
+    "environment":{
       "defaultValue":"stg",
       "type":"String",
       "metadata":{
@@ -75,7 +75,7 @@
       },
       "tags":{
         "Name":"crm-redis-nic-1",
-        "Environment":"[parameters('env')]",
+        "Environment":"[parameters('environment')]",
         "Stack":"crm",
         "Region":"[parameters('region_name')]",
         "Organization":"sloopstash"
@@ -131,7 +131,7 @@
       },
       "tags":{
         "Name":"crm-redis-vm-1",
-        "Environment":"[parameters('env')]",
+        "Environment":"[parameters('environment')]",
         "Stack":"crm",
         "Region":"[parameters('region_name')]",
         "Organization":"sloopstash"
