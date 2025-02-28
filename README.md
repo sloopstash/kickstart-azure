@@ -1,2 +1,12 @@
 # Kickstart Azure
-Our Azure starter-kit repository contains Azure resource-specific configurations, templates, scripts, and other resources required to automate and run workloads in the Azure cloud infrastructure.
+Create and manage highly customized resources in the Microsoft Azure cloud infrastructure using Azure CLI and Azure Resource Manager (ARM).
+
+
+## Getting started
+Please refer to the [wiki](https://github.com/sloopstash/kickstart-azure/wiki) for detailed instructions on how to get started with our Azure starter-kit.
+
+
+## Get support
+- [Issues](https://github.com/sloopstash/kickstart-azure/issues)
+- [Contact us](https://sloopstash.com/contact.html)
+
