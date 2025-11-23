@@ -1,9 +1,8 @@
-# Kickstart Azure
-Create and manage highly customized resources in the Microsoft Azure cloud infrastructure using Azure CLI and Azure Resource Manager (ARM).
+# SloopStash Azure kit
 
 
 ## Getting started
-Please refer to the [wiki](https://github.com/sloopstash/kickstart-azure/wiki) for detailed instructions on how to get started with our Azure starter-kit.
+Please refer to the [documentation](https://sloopstash.com/documentation/toolkit/cloud/azure/index.html) for detailed instructions on how to get started with SloopStash Azure kit.
 
 
 ## Get support

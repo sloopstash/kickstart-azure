@@ -27,14 +27,14 @@
       }
     },
     "virtual_network_subnet_name":{
-      "defaultValue":"crm-vnet-bastion-sn-1",
+      "defaultValue":"crm-vnet-redis-sn-1",
       "type":"String",
       "metadata":{
         "description":"Virtual network subnet name."
       }
     },
     "network_security_group_name":{
-      "defaultValue":"crm-bastion-nsg",
+      "defaultValue":"crm-redis-nsg",
       "type":"String",
       "metadata":{
         "description":"Network security group name."
@@ -51,24 +51,21 @@
   "variables":{},
   "functions":[],
   "resources":{
-    "crm_bastion_nic_1":{
+    "crm_redis_nic_1":{
       "apiVersion":"2021-05-01",
       "type":"Microsoft.Network/networkInterfaces",
-      "name":"crm-bastion-nic-1",
+      "name":"crm-redis-nic-1",
       "location":"[parameters('region_name')]",
       "properties":{
         "ipConfigurations":[{
-          "name":"ip-address-1",
+            "name":"ip-address-1",
             "properties":{
               "subnet":{
                 "id":"[resourceId('Microsoft.Network/virtualNetworks/subnets',parameters('virtual_network_name'),parameters('virtual_network_subnet_name'))]"
               },
               "privateIPAllocationMethod":"Static",
-              "privateIPAddress":"12.1.7.10",
-              "privateIPAddressVersion":"IPv4",
-              "publicIPAddress":{
-                "id":"[resourceId('Microsoft.Network/publicIPAddresses','crm-bastion-pip')]"
-              }
+              "privateIPAddress":"12.1.1.10",
+              "privateIPAddressVersion":"IPv4"
             }
           }
         ],
@@ -77,18 +74,18 @@
         }
       },
       "tags":{
-        "Name":"crm-bastion-nic-1",
+        "Name":"crm-redis-nic-1",
         "Environment":"[parameters('environment')]",
         "Stack":"crm",
         "Region":"[parameters('region_name')]",
         "Organization":"sloopstash"
       }
     },
-    "crm_bastion_vm_1":{
+    "crm_redis_vm_1":{
       "apiVersion":"2023-03-01",
       "type":"Microsoft.Compute/virtualMachines",
-      "dependsOn":["crm_bastion_nic_1"],
-      "name":"crm-bastion-vm-1",
+      "dependsOn":["crm_redis_nic_1"],
+      "name":"crm-redis-vm-1",
       "location":"[parameters('region_name')]",
       "properties":{
         "hardwareProfile":{
@@ -97,7 +94,7 @@
         "storageProfile":{
           "osDisk":{
             "osType":"Linux",
-            "name":"crm-bastion-disk-1",
+            "name":"crm-redis-disk-1",
             "createOption":"FromImage",
             "caching":"ReadWrite",
             "diskSizeGB":30,
@@ -112,14 +109,14 @@
         },
         "networkProfile":{
           "networkInterfaces":[{
-            "id":"[resourceId('Microsoft.Network/networkInterfaces','crm-bastion-nic-1')]",
+            "id":"[resourceId('Microsoft.Network/networkInterfaces','crm-redis-nic-1')]",
             "properties":{
               "deleteOption":"Delete"
             }
           }]
         },
         "osProfile":{
-          "computerName":"crm-bastion-vm-1",
+          "computerName":"crm-redis-vm-1",
           "AdminUsername":"azureuser",
           "linuxConfiguration":{
             "disablePasswordAuthentication":true,
@@ -133,7 +130,7 @@
         }
       },
       "tags":{
-        "Name":"crm-bastion-vm-1",
+        "Name":"crm-redis-vm-1",
         "Environment":"[parameters('environment')]",
         "Stack":"crm",
         "Region":"[parameters('region_name')]",
