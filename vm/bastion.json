@@ -26,13 +26,6 @@
         "description":"Virtual network name."
       }
     },
-    "virtual_network_subnet_name":{
-      "defaultValue":"vnet-bastion-sn-1",
-      "type":"String",
-      "metadata":{
-        "description":"Virtual network subnet name."
-      }
-    },
     "network_security_group_name":{
       "defaultValue":"bastion-nsg",
       "type":"String",
@@ -61,7 +54,7 @@
           "name":"ip-addr-1",
             "properties":{
               "subnet":{
-                "id":"[resourceId('Microsoft.Network/virtualNetworks/subnets',parameters('virtual_network_name'),parameters('virtual_network_subnet_name'))]"
+                "id":"[resourceId('Microsoft.Network/virtualNetworks/subnets',parameters('virtual_network_name'),'vnet-bastion-sn-1')]"
               },
               "privateIPAllocationMethod":"Static",
               "privateIPAddress":"12.1.5.10",
@@ -86,7 +79,7 @@
     "bastion_vm_1":{
       "apiVersion":"2023-03-01",
       "type":"Microsoft.Compute/virtualMachines",
-      "dependsOn":["bastion-ni-1"],
+      "dependsOn":["bastion_ni_1"],
       "name":"bastion-vm-1",
       "location":"[parameters('region_name')]",
       "properties":{
@@ -99,7 +92,7 @@
             "name":"bastion-dsk-1",
             "createOption":"FromImage",
             "caching":"ReadWrite",
-            "diskSizeGB":16,
+            "diskSizeGB":8,
             "managedDisk":{
               "storageAccountType":"Standard_LRS"
             },
