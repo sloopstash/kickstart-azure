@@ -54,7 +54,7 @@
             "name":"ip-addr-1",
             "properties":{
               "subnet":{
-                "id":"[resourceId('Microsoft.Network/virtualNetworks/subnets',parameters('virtual_network_name'),'container-s1-vnet-docker-sn-1']"
+                "id":"[resourceId('Microsoft.Network/virtualNetworks/subnets',parameters('virtual_network_name'),'container-s1-vnet-docker-sn-1')]"
               },
               "privateIPAllocationMethod":"Static",
               "privateIPAddress":"12.1.1.11",
@@ -90,7 +90,7 @@
             "name":"container-s1-docker-mgr-dsk-1",
             "createOption":"FromImage",
             "caching":"ReadWrite",
-            "diskSizeGB":8,
+            "diskSizeGB":30,
             "managedDisk":{
               "storageAccountType":"Standard_LRS"
             },

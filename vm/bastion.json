@@ -92,7 +92,7 @@
             "name":"bastion-dsk-1",
             "createOption":"FromImage",
             "caching":"ReadWrite",
-            "diskSizeGB":8,
+            "diskSizeGB":30,
             "managedDisk":{
               "storageAccountType":"Standard_LRS"
             },

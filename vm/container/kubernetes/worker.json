@@ -54,7 +54,7 @@
             "name":"ip-addr-1",
             "properties":{
               "subnet":{
-                "id":"[resourceId('Microsoft.Network/virtualNetworks/subnets',parameters('virtual_network_name'),'container-s2-vnet-kubernetes-sn-2']"
+                "id":"[resourceId('Microsoft.Network/virtualNetworks/subnets',parameters('virtual_network_name'),'container-s2-vnet-kubernetes-sn-2')]"
               },
               "privateIPAllocationMethod":"Static",
               "privateIPAddress":"12.1.4.21",
@@ -84,7 +84,7 @@
             "name":"ip-addr-1",
             "properties":{
               "subnet":{
-                "id":"[resourceId('Microsoft.Network/virtualNetworks/subnets',parameters('virtual_network_name'),'container-s2-vnet-kubernetes-sn-1']"
+                "id":"[resourceId('Microsoft.Network/virtualNetworks/subnets',parameters('virtual_network_name'),'container-s2-vnet-kubernetes-sn-1')]"
               },
               "privateIPAllocationMethod":"Static",
               "privateIPAddress":"12.1.3.21",
@@ -112,7 +112,7 @@
       "location":"[parameters('region_name')]",
       "properties":{
         "hardwareProfile":{
-          "vmSize":"Standard_B1s"
+          "vmSize":"Standard_B2s"
         },
         "storageProfile":{
           "osDisk":{
@@ -120,7 +120,7 @@
             "name":"container-s2-kubernetes-wkr-dsk-1",
             "createOption":"FromImage",
             "caching":"ReadWrite",
-            "diskSizeGB":16,
+            "diskSizeGB":30,
             "managedDisk":{
               "storageAccountType":"Standard_LRS"
             },
@@ -168,7 +168,7 @@
       "location":"[parameters('region_name')]",
       "properties":{
         "hardwareProfile":{
-          "vmSize":"Standard_B1s"
+          "vmSize":"Standard_B2s"
         },
         "storageProfile":{
           "osDisk":{
@@ -176,7 +176,7 @@
             "name":"container-s2-kubernetes-wkr-dsk-2",
             "createOption":"FromImage",
             "caching":"ReadWrite",
-            "diskSizeGB":16,
+            "diskSizeGB":30,
             "managedDisk":{
               "storageAccountType":"Standard_LRS"
             },
